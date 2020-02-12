@@ -1,0 +1,146 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%      Package by knonn      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{knonn_layout}
+\usepackage{glossaire_perso}
+\usepackage[hidelinks]{hyperref}%Package lien dans le sommaire
+\usepackage[margin=1in]{geometry}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[compact]{titlesec}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{glossaries}
+\usepackage{ifxetex}
+%\usepackage[latin1]{inputenc}
+\usepackage{dirtytalk}
+\usepackage{textcomp}
+\usepackage{csquotes}
+\usepackage{float}
+\usepackage{listingsutf8}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+%Utilisation des lettres grecques
+\usepackage{amsmath}
+
+\ifxetex
+    \usepackage{fontspec}
+    \usepackage{xunicode}
+    \usepackage{polyglossia}
+    \usepackage{xltxtra}
+\else
+%    \usepackage[T1]{fontenc}
+%    \usepackage[utf8]{inputenc}
+%    \usepackage[french]{babel}
+\fi
+
+%Date time
+\usepackage{datetime}
+
+%Paramètres entete & pied de page
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+%Formattage des titre des sections et subsections
+\titlespacing{\section}{0pt}{30pt}{10pt}
+\titlespacing{\subsection}{0pt}{10pt}{5pt}
+
+%Couleurs pour le lstlisting
+\definecolor{DarkGreen}{rgb}{0,0.75,0}%
+\definecolor{DarkRed}{rgb}{0.5,0,0}%
+\definecolor{DarkBlue}{rgb}{0,0,0.75}%
+\definecolor{LightRed}{rgb}{1,0,0}%
+
+%Commandes perso
+\newcommand{\txt}[1]{\ttfamily#1}
+\newcommand{\IP}{\ttfamily{IP}}
+\newcommand{\TCP}{\ttfamily{TCP}}
+\newcommand{\ICMP}{\ttfamily{ICMP}}
+
+%Renommer la table des matieres
+\addto\captionsfrench{\renewcommand{\contentsname}{Sommaire}}
+
+%Paramètres listing code
+\lstset{
+language=python,%
+showstringspaces=false,%
+basicstyle=\normalsize\ttfamily,%
+keywordstyle=\color{DarkRed},%
+stringstyle=\color{LightRed},%
+identifierstyle=,%
+commentstyle=\color{DarkGreen},%
+numbers=left,%
+frame=trBL,%
+breaklines=true,%
+%prebreak={ \textbackslash{}},%
+%postbreak={..\space},%
+breakatwhitespace=true,%
+escapeinside={(*@}{@*)},%
+extendedchars=false,%
+%literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1,%
+}
+\lstset{
+language=c,%
+showstringspaces=false,%
+basicstyle=\normalsize\ttfamily,%
+keywordstyle=\color{DarkRed},%
+stringstyle=\color{LightRed},%
+identifierstyle=,%
+commentstyle=\color{DarkGreen},%
+numbers=left,%
+frame=trBL,%
+breaklines=true,%
+%prebreak={ \textbackslash{}},%
+%postbreak={..\space},%
+breakatwhitespace=true,%
+escapeinside={(*@}{@*)},%
+extendedchars=false,%
+%literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1,%
+}
+\lstset{
+language=ruby,%
+showstringspaces=false,%
+basicstyle=\normalsize\ttfamily,%
+keywordstyle=\color{DarkRed},%
+stringstyle=\color{LightRed},%
+identifierstyle=,%
+commentstyle=\color{DarkGreen},%
+numbers=left,%
+frame=trBL,%
+breaklines=true,%
+%prebreak={ \textbackslash{}},%
+%postbreak={..\space},%
+breakatwhitespace=true,%
+escapeinside={(*@}{@*)},%
+extendedchars=false,%
+%literate={à}{{\`a}}1 {è}{{\`e}}1 {é}{{\'e}}1,%
+}
+
+%Parametrage du maketitle
+\makeatletter
+\def\maketitle{
+  \begin{titlepage}
+    \null\vfill
+    \begin{flushleft}
+      {\@title}
+      \vskip 0.3cm
+      \rule{160mm}{.1pt}
+      \vspace{-5ex}
+    \end{flushleft}
+        {\large\@author \hfill \@date}
+        \vfill\null
+  \end{titlepage}
+}
+\makeatother
+
+%Time format
+\newtimeformat{seconds}{\hhmmsstime}
+\settimeformat{seconds}
+
+%Auteur, date et version
+\author{Auteur}
+\date{Version du {\ddmmyyyydate\today}\ - \currenttime}

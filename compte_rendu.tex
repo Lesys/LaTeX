@@ -1,0 +1,188 @@
+\documentclass[a4paper,french,titlepage]{article} \usepackage{knonn_layout}
+
+%Glossaire
+
+
+%\makeglossaries
+
+\glstoctrue
+
+\makenoidxglossaries
+
+%Lien vers les images
+
+
+\graphicspath{ {images/} }
+
+%Suppression de l'indentations des paragraphes
+\setlength{\parindent}{0pt}
+
+%Commandes persos pour ce document
+\newcommand{\dateDebut}{12/02/20} %La date de d\'ebut du projet
+\newcommand{\dateFin}{12/02/20} %La date limite du projet / la date à laquelle le document a \'et\'e termin\'e
+\newcommand{\titledoc}{Compte Rendu XXX} %Le thème principal du document
+\newcommand{\undertitle}{Projet d'étude} %Titre du document, sur quoi il porte
+\newcommand{\ICC}{Nom de l'école} %Nom de votre école
+\newcommand{\school}{\textit{\textbf{\ICC}}} %Lieu dans lequel le compte rendu est fait
+\newcommand{\curversion}{Version \no0.0.1} %La derni\`ere version du document (A METTRE A JOUR LE PLUS SOUVENT POSSIBLE)
+
+%Acteurs
+
+%Titre du document
+%Pour un compte rendu de stage / alternance: en haut en gros: "undertitle"
+%en dessous: "school" + "where"
+
+%Pour une r\'edaction pour l'\'ecole: en haut en gros: "title" (qui sera le thème du cours)
+%en dessous: "undertitle" (qui sera le sujet)
+\title{
+    \begin{minipage}\linewidth
+        \flushright\bfseries
+        \Huge \titledoc
+        \vskip3pt
+        \LARGE \undertitle%\school~-~\where 
+    \end{minipage}
+}
+
+%Entête
+\renewcommand{\headrulewidth}{1pt}
+\fancyhead[R]{} %\undertitle} %Affche le titre du document avec l'\'ecole à droite
+\fancyhead[C]{Nom de l'auteur} %Affiche l'auteur à gauche
+\fancyhead[L]{}
+%Pied de Page
+\renewcommand{\footrulewidth}{1pt}
+\fancyfoot[C]{} %Affiche "rien" au centre
+\fancyfoot[L]{\today~- \titledoc} %Affichage date du dernier changement à gauche
+\fancyfoot[R]{\curversion~-~Page \thepage} %Affiche la version et le num\'ero de la page à droite
+
+
+
+\glsresetall
+%Glossaire
+\newglossaryentry{wiki}{
+	name={Wikipedia},
+	description={\gls{wiki} est une encyclopédie universelle, collaborative et multilingue, créée par Jimmy Wales et Larry Sanger le 15 janvier 2001, gérée par wiki dans le site web \href{wikipedia.org}{wikipedia.org}.}
+}
+%\newglossaryentry{gantt}{
+%    name={GANTT},
+%    description={Outil utilisé (souvent en complément d'un réseau PERT) en ordonnancement et en gestion de projet et permettant de visualiser dans le temps les diverses tâches composant un projet.}
+%}
+
+%\newacronym
+%[description={Outil permettant de faire des requêtes en amont et de cr\'eer des processus de traitements pour permettre de faire avancer une chaîne.}]
+%{etl}{ETL}{Extract, Transform, Load (Extraction, Transformation et Chargement)}
+
+
+%D\'ebut du document
+\begin{document}
+    %Affichage du logo de votre école ou entreprise
+%    \begin{figure}
+%	\includegraphics[width=0.3\textwidth]{logo.png}
+%    \end{figure}
+
+    %Construction du titre
+    \maketitle
+    %Table des mati\`eres / Sommaire
+    \tableofcontents
+    %Saut de page
+    \newpage
+
+	%Section 1 - Introduction
+	\section{Section 1}
+		\subsection{Introduction}
+			Texte de la première sous-section (en général un paragraphe d'introduction).
+		\subsection{Itemize}
+			Ici un début de puces:
+			\begin{itemize}
+				\item Item 1
+				\item Item 2
+				\item Item 3
+				\item Item 4
+			\end{itemize}
+		\subsection{Types de texte}
+				\underline{Texte sousligné}
+				\textbf{Texte en gras}
+
+		\subsection{Afficher une image}
+			On peut aussi appeler la référence de l'image \ref{Image centrée} et cliquer dessus pour y aller.
+			\subsubsection{Image de \gls{wiki} centrée de 20\% de la taille du texte}
+			\label{Image centrée}
+				\begin {figure}[H]
+					\begin{center}
+						\includegraphics[width=0.2\textwidth]{centre.png}
+					\end{center}
+					\caption{Ceci est la description de l'image centrée}
+					\hspace{150pt}
+				\end{figure}
+
+		\subsection{Tableaux}
+			\subsubsection{Tableau centré}
+				\begin{center}
+					\begin{tabular}{| c | c | c |} %p{5cm}
+						\hline
+						Colonne 1 & Colonne 2 & Colonne 3\\ \hline\hline
+						Première case & Deuxième case & Troisième case\\ \hline
+						2.1 case & 2.2 case & 2.3 case\\ \hline
+					\end{tabular}
+				\end{center}
+
+		\subsection{Listing de code}
+			Pour compiler un fichier .tex en format PDF, faites les commandes suivantes:
+			\begin{lstlisting}
+./makepdf.sh compte_rendu.tex
+			\end{lstlisting}
+			Vous pouvez également faire des diaporamas en \LaTeX.
+
+			Il y a aussi la possibilité de mettre du code
+			\begin{itemize}
+				\item En python:
+					\begin{lstlisting}[language=python]
+import numpy as np
+Fe = 10000
+amp = 100
+Tmax = 0.01
+N = int(Tmax * Fe/2)
+
+def somme(a, b):
+	return a + b
+
+print(somme(5, 6))
+					\end{lstlisting}
+				\item En C:
+					\begin{lstlisting}[language=C]
+void main(int argc, char** argv) {
+	char* chaine = "Bonjour";
+	printf("La chaine est: %s", chaine);
+}
+					\end{lstlisting}
+				\item En Ruby:
+					\begin{lstlisting}[language=Ruby]
+class Point
+	def initialize(x, y)
+		@x = x
+		@y = y
+	end
+
+	attr_accessor :x, :y
+end
+					\end{lstlisting}
+			\end{itemize}
+
+%	\section{Annexes}
+%		\subsection{Annexe 1}
+%		\label{Annexe 1}
+%			\begin {figure}[H]
+%				\begin{center}
+%					\includegraphics[width=\textwidth]{image.png}
+%				\end{center}
+%				\hspace{150pt}
+%				\caption{Image de l'annexe 1}
+%			\end{figure}
+%\newpage
+	%Webographie
+	\section{Webographie}
+		\begin{itemize}
+			\item \href{https://wikipedia.org}{\underline{On arrive sur la page de \gls{wiki} si tu me cliques dessus}}
+		\end{itemize}
+%\newpage
+    \printnoidxglossaries
+\end{document}

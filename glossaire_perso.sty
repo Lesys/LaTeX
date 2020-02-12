@@ -1,0 +1,16 @@
+
+\ProvidesPackage{glossaire_perso}
+\usepackage{glossaries}
+\usepackage{ifxetex}
+
+\ifxetex
+    \usepackage{fontspec}
+    \usepackage{xunicode}
+    \usepackage{xltxtra}
+    \usepackage{polyglossia}
+\else
+    \usepackage[T1]{fontenc}
+    \usepackage[utf8]{inputenc}
+    \usepackage[french]{babel}
+\fi
+
